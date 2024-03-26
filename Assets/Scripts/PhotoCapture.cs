@@ -13,6 +13,10 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private GameObject cameraFlash;
     [SerializeField] private float flashTime;
 
+    [Header("Camera Remove")]
+    [SerializeField] private GameObject cameraRemove;
+    [SerializeField] private float cameraRemoveTime;
+
     [Header("Photo Fader Effect")]
     [SerializeField] private Animator fadingAnimation;
 
@@ -77,6 +81,7 @@ public class PhotoCapture : MonoBehaviour
 
         photoFrame.SetActive(true);
         StartCoroutine(cameraFlashEffect());
+        StartCoroutine(cameraRemoveEffect());
 
         fadingAnimation.Play("PhotoFade");
 
@@ -88,6 +93,13 @@ public class PhotoCapture : MonoBehaviour
         cameraFlash.SetActive(true);
         yield return new WaitForSeconds(flashTime);
         cameraFlash.SetActive(false);
+    }
+
+    IEnumerator cameraRemoveEffect()
+    {
+        cameraRemove.SetActive(false);
+        yield return new WaitForSeconds(cameraRemoveTime);
+        cameraRemove.SetActive(true);
     }
 
     void RemovePhoto()
