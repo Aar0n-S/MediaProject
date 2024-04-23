@@ -128,7 +128,9 @@ public class PhotoCapture : MonoBehaviour
         Debug.Log("Screenshot saved to: " + filePath);
 
         GameObject.Find("PhotoLocation").GetComponent<TMP_Text>().text = filePath;
-        
+        GameObject.Find("PhotoLocation").GetComponent<TMP_Text>().alpha = 0;
+
+
     }
     
 
