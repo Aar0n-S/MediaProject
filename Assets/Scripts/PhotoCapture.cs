@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 public class PhotoCapture : MonoBehaviour
 {
@@ -125,6 +126,9 @@ public class PhotoCapture : MonoBehaviour
         File.WriteAllBytes(filePath, pngShot);  
 
         Debug.Log("Screenshot saved to: " + filePath);
+
+        GameObject.Find("PhotoLocation").GetComponent<TMP_Text>().text = filePath;
+        
     }
     
 
