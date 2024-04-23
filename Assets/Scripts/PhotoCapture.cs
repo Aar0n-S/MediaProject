@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class PhotoCapture : MonoBehaviour
 {
@@ -70,6 +71,8 @@ public class PhotoCapture : MonoBehaviour
         screenCapture.Apply();
 
         ShowPhoto();
+
+        SaveScreenshot(screenCapture);
     }
 
     void ShowPhoto()
@@ -108,6 +111,20 @@ public class PhotoCapture : MonoBehaviour
         viewingPhoto = false;
         photoFrame.SetActive(false);
         
+    }
+
+    private void SaveScreenshot(Texture2D screenCapture)
+    {
+        string FileName = Path.GetRandomFileName() + ".png";
+
+        string filePath = Path.Combine(Application.persistentDataPath, FileName);
+
+        byte[] pngShot = screenCapture.EncodeToPNG();
+
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        File.WriteAllBytes(filePath, pngShot);  
+
+        Debug.Log("Screenshot saved to: " + filePath);
     }
     
 
