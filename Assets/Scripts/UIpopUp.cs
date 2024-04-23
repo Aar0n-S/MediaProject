@@ -23,6 +23,10 @@ public class UIpopUp : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+
+
+
+
             ShowUI();
         }
     }
