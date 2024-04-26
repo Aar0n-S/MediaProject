@@ -15,10 +15,6 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private GameObject cameraFlash;
     [SerializeField] private float flashTime;
 
-    [Header("Camera Remove")]
-    [SerializeField] private GameObject cameraRemove;
-    [SerializeField] private float cameraRemoveTime;
-
     [Header("Photo Fader Effect")]
     [SerializeField] private Animator fadingAnimation;
 
@@ -83,9 +79,10 @@ public class PhotoCapture : MonoBehaviour
         Sprite photoSprite = Sprite.Create(screenCapture, new Rect(0.0f, 0.0f, screenCapture.width, screenCapture.height), new Vector2(0.5f, 0.5f), 100.0f);
         photoDisplayArea.sprite = photoSprite;
 
+        //add the photo frame mask
         photoFrame.SetActive(true);
+        //have the flash turn on and off
         StartCoroutine(cameraFlashEffect());
-        StartCoroutine(cameraRemoveEffect());
 
         fadingAnimation.Play("PhotoFade");
 
@@ -97,13 +94,6 @@ public class PhotoCapture : MonoBehaviour
         cameraFlash.SetActive(true);
         yield return new WaitForSeconds(flashTime);
         cameraFlash.SetActive(false);
-    }
-
-    IEnumerator cameraRemoveEffect()
-    {
-        cameraRemove.SetActive(false);
-        yield return new WaitForSeconds(cameraRemoveTime);
-        cameraRemove.SetActive(true);
     }
 
     void RemovePhoto()
@@ -127,7 +117,7 @@ public class PhotoCapture : MonoBehaviour
 
         Debug.Log("Screenshot saved to: " + filePath);
 
-        GameObject.Find("PhotoLocation").GetComponent<TMP_Text>().text = filePath;
+       // GameObject.Find("PhotoLocation").GetComponent<TMP_Text>().text = filePath;
 
 
     }
