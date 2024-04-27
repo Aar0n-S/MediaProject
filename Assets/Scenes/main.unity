@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_text: "As a journalist you should explore this mine and find out more about the
     area\u2019s situation. To move use WASD and the mouse to look around. To take
     photos press left click and to exit the photo screen press it again. There is
-    more information located near the truck in front of you, the mining equipment
+    more information located near the lorry in front of you, the mining equipment
     and near some of the rock in the mine. Once you are finished you can leave in
     the pickup truck to see some of the results of your journalism. "
   m_isRightToLeft: 0
@@ -4707,7 +4707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1290705896
 MonoBehaviour:
   m_ObjectHideFlags: 0
